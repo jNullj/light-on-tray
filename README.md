@@ -4,7 +4,7 @@ Light on Tray is a small utility that allows control over smart lightbulbs conve
 
 We corrently only support yeelight devices.
 
-<video src="./readme_resources/example.mp4" autoplay="autoplay" muted="muted" loop="loop"></video>
+https://github.com/jNullj/light-on-tray/assets/15849761/f12f6fd1-df80-47f8-8335-ab118efaa0b3
 
 ## Installation
 
