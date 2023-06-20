@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "start",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run", "start"],
+            "cwd": "${workspaceFolder}",
+          },
+          {
+            "type": "node",
+            "request": "launch",
+            "name": "start:debug",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run", "start:debug"],
+            "cwd": "${workspaceFolder}",
+          }
+    ],
+    "compounds": [
+      {
+        "name": "Run",
+        "configurations": ["start", "start:debug"]
+      }
+    ]
+  }
+
+  

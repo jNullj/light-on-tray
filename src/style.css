@@ -1,0 +1,91 @@
+html {
+    width: max-content;
+    height: max-content;
+    overflow: hidden;
+}
+
+body {
+    background-color: rgba(0, 24, 41, 0.788);
+    color: white;
+    width: max-content;
+    height: max-content;
+}
+
+.power-state-icon {
+    height: 24px;
+    width: 24px;
+    background-image: url('file:///src/assets/panel/icon256b.png');
+    background-size: 24px;
+    appearance: none;
+}
+
+.power-state-icon:checked {
+    background-image: url('file:///src/assets/panel/icon_bold_light.png');
+}
+
+.color-mode-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.color-mode-container input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.color-mode-container label {
+    display: flex;
+    flex-grow: 1;
+    border: 1px solid #ffffff;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-mode-container label:has(input:checked) {
+    border: 1px solid #3dff02;
+}
+
+.temperature-picker {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.temperature-color {
+    width: 40px;
+    height: 15px;
+    border: 5px solid #e5e5e5;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px #000;
+    display: inline-block;
+}
+
+.temperature-input {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 150px;
+    height: 30px;
+    background: linear-gradient(to right,
+        rgb(255, 121, 0) 0%,
+        rgb(255, 165, 84) 20%,
+        rgb(255, 196, 147) 40%,
+        rgb(255, 219, 191) 60%,
+        rgb(255, 238, 223) 80%,
+        rgb(255, 254, 250) 100%);
+    z-index: 1;
+    display: none;
+}
+
+.temperature-input input[type="range"] {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+}
+
+.temperature-picker label {
+    padding-left: 5px;
+}

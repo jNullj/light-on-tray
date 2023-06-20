@@ -1,0 +1,35 @@
+{
+  "name": "light-on-tray",
+  "version": "1.0.0",
+  "description": "Light on Tray is a small utility that allows control over smart lightbulbs conveniently from the system tray",
+  "keywords": [
+    "electron-app",
+    "electron",
+    "yeelight",
+    "tray-utility",
+    "light-control",
+    "smarthome",
+    "iot",
+    "smartbulb"
+  ],
+  "homepage": "https://github.com/jNullj/light-on-tray#readme",
+  "bugs": {
+    "url": "https://github.com/jNullj/light-on-tray/issues"
+  },
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "start:debug": "electron . -debug"
+  },
+  "author": "jNullj (https://github.com/jNullj)",
+  "repository": {
+    "type": "git",
+    "url": "github:jNullj/light-on-tray"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron": "25.1.0",
+    "ssdp2": "1.1.2",
+    "yeelight2": "1.3.8"
+  }
+}
