@@ -14,13 +14,13 @@ body {
 .power-state-icon {
     height: 24px;
     width: 24px;
-    background-image: url('file:///src/assets/panel/icon256b.png');
+    background-image: url('./assets/panel/icon256b.png');
     background-size: 24px;
     appearance: none;
 }
 
 .power-state-icon:checked {
-    background-image: url('file:///src/assets/panel/icon_bold_light.png');
+    background-image: url('./assets/panel/icon_bold_light.png');
 }
 
 .color-mode-container {
