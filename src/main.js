@@ -106,7 +106,7 @@ const createWindow = () => {
       })
 
       // This is where the index.html file is loaded into the window
-      panel.loadURL(path.join(__dirname + '/panel.html'));
+      panel.loadFile(path.join(__dirname, 'panel.html'))
       if (DEBUG) {
         panel.webContents.openDevTools({mode: 'detach'})
       }
