@@ -1,9 +1,11 @@
 const path = require('path');
-const { app, Tray, Menu, BrowserWindow, ipcMain } = require('electron')
+const os = require('os')
+const { app, Tray, Menu, BrowserWindow, ipcMain, screen } = require('electron')
 const Yeelight = require('yeelight2');
 
 const APPNAME = 'light on tray'
 const DEBUG = process.argv.includes('-debug')
+const isLinux = os.platform() === 'linux'
 
 let tray
 /**
@@ -106,7 +108,7 @@ const createWindow = () => {
       })
 
       // This is where the index.html file is loaded into the window
-      panel.loadURL(path.join(__dirname + '/panel.html'));
+      panel.loadFile(path.join(__dirname, 'panel.html'))
       if (DEBUG) {
         panel.webContents.openDevTools({mode: 'detach'})
       }
@@ -196,7 +198,7 @@ const toggleWindow = (panel) => {
 }
 
 const showWindow = (panel) => {
-    const position = getWindowPosition(panel)
+    const position = isLinux ? getWindowPositionLinux(panel) : getWindowPosition(panel)
     panel.setPosition(position.x, position.y, false)
     panel.show()
     panel.focus()
@@ -213,6 +215,19 @@ const getWindowPosition = (panel) => {
     const y = Math.round(trayBounds.y - windowBounds.height)
   
     return {x: x, y: y}
+}
+
+const getWindowPositionLinux = (panel) => {
+  const windowBounds = panel.getBounds()
+  const taskbarHeight = 10  // TODO assume taskbar is buttom and 10px high
+
+  // Center window horizontally below the tray icon
+  const x = Math.floor(screen.getCursorScreenPoint().x - (windowBounds.width/2))
+
+  // Position window 4 pixels vertically below the tray icon
+  const y = Math.floor(screen.getCursorScreenPoint().y - windowBounds.height - taskbarHeight )
+
+  return {x: x, y: y}
 }
 
 app.whenReady().then(() => {

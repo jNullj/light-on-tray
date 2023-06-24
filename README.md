@@ -1,6 +1,6 @@
 # Light on Tray ![Lightbulb icon](/src/assets/tray-icons/icon32.png)
 
-Light on Tray is a small utility that allows control over smart lightbulbs conveniently from the system tray. With Light on Tray, you can easily adjust the brightness, change colors, and toggle power for your smart lightbulbs.
+Light on Tray is a small cross-platform utility that allows control over smart lightbulbs conveniently from the system tray. With Light on Tray, you can easily adjust the brightness, change colors, and toggle power for your smart lightbulbs.
 
 We corrently only support yeelight devices.
 
@@ -33,6 +33,7 @@ npm run start
 - Change mode
 - Control multiple devices
 - Give devices a persistent name
+- Supports both linux and windows
 
 ## Contributing
 
