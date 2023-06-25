@@ -207,27 +207,69 @@ const showWindow = (panel) => {
 const getWindowPosition = (panel) => {
     const windowBounds = panel.getBounds()
     const trayBounds = tray.getBounds()
+    // TODO fix taskbar height
+    const edge = closestEdge()
+    const centerX = edge.bottom || edge.top
+    const centerY = edge.left || edge.right
+
+    const x = Math.floor(
+      trayBounds.x
+      - centerX*(windowBounds.width - trayBounds.width)/2
+      - !centerX*edge.right*windowBounds.width
+      + edge.left*trayBounds.width
+    )
   
-    // Center window horizontally below the tray icon
-    const x = Math.round(trayBounds.x + (trayBounds.width / 2) - (windowBounds.width / 2))
-  
-    // Position window 4 pixels vertically below the tray icon
-    const y = Math.round(trayBounds.y - windowBounds.height)
+    const y = Math.floor(
+      trayBounds.y
+      - centerY*(windowBounds.height - trayBounds.height)/2
+      - !centerY*edge.bottom*windowBounds.height
+      + edge.top*trayBounds.height
+    )
   
     return {x: x, y: y}
 }
 
 const getWindowPositionLinux = (panel) => {
   const windowBounds = panel.getBounds()
-  const taskbarHeight = 10  // TODO assume taskbar is buttom and 10px high
+  const taskbarPadding = 10  // TODO assumes taskbar is 10px high
+  const edge = closestEdge()
+  const centerX = edge.bottom || edge.top
+  const centerY = edge.left || edge.right
 
-  // Center window horizontally below the tray icon
-  const x = Math.floor(screen.getCursorScreenPoint().x - (windowBounds.width/2))
+  const x = Math.floor(
+    screen.getCursorScreenPoint().x
+    - centerX*windowBounds.width/2
+    - !centerX*edge.right*windowBounds.width
+    + edge.left*taskbarPadding
+  )
 
-  // Position window 4 pixels vertically below the tray icon
-  const y = Math.floor(screen.getCursorScreenPoint().y - windowBounds.height - taskbarHeight )
+  const y = Math.floor(
+    screen.getCursorScreenPoint().y
+    - centerY*windowBounds.height/2
+    - !centerY*edge.bottom*windowBounds.height
+    + edge.top*taskbarPadding
+  )
 
   return {x: x, y: y}
+}
+
+const closestEdge = () => {
+  const cursorPoint = screen.getCursorScreenPoint()
+  const display = screen.getDisplayNearestPoint(cursorPoint)
+  const screenSize = display.size
+  const distance = {
+    top: cursorPoint.y,
+    left: cursorPoint.x,
+    bottom: screenSize.height - cursorPoint.y,
+    right: screenSize.width - cursorPoint.x,
+  }
+  const minDistance = Math.min(...Object.values(distance))
+  return {
+    top: minDistance === distance.top,
+    left: minDistance === distance.left,
+    bottom: minDistance === distance.bottom,
+    right: minDistance === distance.right,
+  }
 }
 
 app.whenReady().then(() => {
