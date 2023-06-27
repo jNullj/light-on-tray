@@ -25,7 +25,9 @@ function logDBG(...args) {
 function scanDevices(panel){
   try{
     Yeelight.discover(function(device){
+      this.close()
 
+      if (devices[device.id]) { return }
       devices[device.id] = device;
 
       logDBG('found device:' + device.name)
