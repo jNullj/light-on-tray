@@ -30,7 +30,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "electron": "27.0.0",
+    "electron": "27.1.2",
     "ssdp2": "1.1.2",
     "yeelight2": "1.3.8"
   },
