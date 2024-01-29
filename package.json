@@ -32,7 +32,7 @@
   "dependencies": {
     "electron": "28.1.4",
     "ssdp2": "1.1.2",
-    "yeelight2": "1.3.8"
+    "yeelight2": "1.3.9"
   },
   "devDependencies": {
     "eslint": "8.56.0",
